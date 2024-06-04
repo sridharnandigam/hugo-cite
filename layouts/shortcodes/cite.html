@@ -110,13 +110,13 @@
         {{- $currentRef := . -}}
         <span class="hugo-cite-group">
 
-          {{/* Add to the collection of cited references */}}
+          {{- /* Add to the collection of cited references */ -}}
           {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
-          {{/* Add to the collection of cited references */}}
+          {{- /* Add to the collection of cited references */ -}}
           {{- $.Page.Scratch.SetInMap "citedBib" $key $currentRef -}}
 
-          <a href="#{{- $key | urlize -}}"><span class="visually-hidden">Citation: </span>
+          <a href="#{{- $key | urlize -}}"><span class="visually-hidden"></span>
             {{- $reference := . -}}
 
             {{- /* -------------------- BEGIN Display authors -------------------- */ -}}
@@ -172,7 +172,7 @@
 
           {{- /* Eliminate space between css-hidden citation hover block */ -}}
 
-          <span class="hugo-cite-citation"> {{ partial $partialPath $reference }}</span></span>
+          {{- /*<span class="hugo-cite-citation"> {{ partial $partialPath $reference }}</span></span> */ -}}
 
         {{- if lt (add 1 $keyIndex) $totalRefs -}};&#32;{{- end -}}
 
