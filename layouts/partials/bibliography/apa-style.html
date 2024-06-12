@@ -109,7 +109,6 @@
      itemprop="identifier"
      itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>
   {{- else if .URL }}&#32;
-  {{- i18n "apa_retrieved_from" | default "Retrieved from" -}}&#32;
   <a href="{{ .URL }}"
      itemprop="identifier"
      itemtype="https://schema.org/URL">{{ .URL }}</a>
@@ -271,7 +270,23 @@
 <span itemscope
       itemtype="https://schema.org/WebPage"
       data-type="webpage">
-  {{- template "authorPart" . -}}
+
+  {{- template "authorPart" . -}}.
+  &#32;
+  {{- if .title -}}
+  <span itemprop="name">
+    {{- .title | markdownify -}}
+  </span>.
+  {{- end -}}
+
+  {{- with .publisher -}}&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">
+      {{- . -}}
+    </span></span>.
+  {{- end }}
 
   {{- template "issuedFullPart" . -}}.
 
